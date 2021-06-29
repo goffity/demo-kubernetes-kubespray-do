@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    digitalocean = {
-      source  = "digitalocean/digitalocean"
-      version = "2.3.0"
-    }
-  }
-}
-
-provider "digitalocean" {
-  token = var.do_token
-}
-
 # resource "digitalocean_ssh_key" "default" {
 #   name       = "k8s-ssh-key"
 #   public_key = file(var.public_ssh_key_location)
@@ -85,10 +72,6 @@ resource "digitalocean_project_resources" "k8s_droplet" {
     digitalocean_droplet.ubuntu-k8s-node[count.index].urn,
   ]
 }
-
-# output "droplet_ubuntu-managed_ip" {
-#   value = digitalocean_droplet.ubuntu-managed.ipv4_address
-# }
 
 output "droplet_api_ip" {
   value = {
